@@ -1,0 +1,304 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+
+    --chart-1: 12 76% 61%;
+
+    --chart-2: 173 58% 39%;
+
+    --chart-3: 197 37% 24%;
+
+    --chart-4: 43 74% 66%;
+
+    --chart-5: 27 87% 67%;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Extra small screens */
+@layer utilities {
+  .xs\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .xs\:inline {
+    display: inline;
+  }
+}
+
+/* Preview section styles */
+.preview-section {
+  @apply flex flex-col items-center justify-center;
+  height: 100%;
+  overflow: hidden !important;
+  position: relative;
+  padding-top: 80px; /* Added padding to the top of the preview section */
+}
+
+.preview-container {
+  @apply flex flex-col items-center;
+  max-height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%; /* Reset to 50% since we're using padding now */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.preview-canvas-wrapper {
+  @apply relative w-full max-w-[640px];
+  @apply aspect-video;
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: black;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Mobile preview adjustments */
+@media (max-width: 768px) {
+  .preview-section {
+    height: 50vh;
+    position: static;
+    padding-top: 40px; /* Reduced padding for mobile */
+  }
+
+  .preview-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    padding: 1rem;
+  }
+}
+
+/* Control panel styles */
+.control-panel {
+  @apply p-4;
+  background-color: transparent;
+}
+
+.overlay-section {
+  @apply mb-6 bg-white/80 rounded-md overflow-hidden border border-gray-200;
+  backdrop-filter: blur(5px);
+}
+
+.overlay-header {
+  @apply flex items-center justify-between px-4 py-2 bg-white border-b border-gray-200;
+}
+
+.overlay-title {
+  @apply text-sm font-medium text-gray-800 flex items-center;
+}
+
+.overlay-controls {
+  @apply flex items-center gap-2;
+}
+
+.section-content {
+  @apply p-4;
+}
+
+.section-group {
+  @apply mb-6;
+}
+
+.section-group:last-child {
+  @apply mb-0;
+}
+
+.section-group-title {
+  @apply text-sm font-medium text-gray-700 mb-3;
+}
+
+/* Horizontal form layout */
+.form-row {
+  @apply flex flex-wrap items-start gap-4 mb-4;
+}
+
+.form-field {
+  @apply mb-4;
+}
+
+.form-field-full {
+  @apply w-full mb-4;
+}
+
+.form-field-auto {
+  @apply flex-auto;
+}
+
+.form-field-fixed {
+  @apply w-32;
+}
+
+.form-label {
+  @apply block text-xs font-medium text-gray-700 mb-1;
+}
+
+.form-input {
+  @apply w-full h-9 px-2 py-1 text-sm border border-gray-300 rounded-md;
+}
+
+.form-select {
+  @apply h-9 text-sm;
+}
+
+.form-textarea {
+  @apply w-full px-2 py-1 text-sm border border-gray-300 rounded-md;
+}
+
+.form-checkbox {
+  @apply flex items-center h-9 justify-center;
+}
+
+.button-row {
+  @apply flex flex-wrap items-center gap-2 mt-2;
+}
+
+.reset-button {
+  @apply bg-blue-500 hover:bg-blue-600 text-white text-xs px-2 py-1 rounded-md;
+}
+
+.fetch-button {
+  @apply bg-blue-500 hover:bg-blue-600 text-white text-xs px-2 py-1 rounded-md;
+}
+
+.manage-button {
+  @apply bg-blue-500 hover:bg-blue-600 text-white text-xs px-2 py-1 rounded-md;
+}
+
+.prev-button {
+  @apply bg-blue-500 hover:bg-blue-600 text-white text-xs px-2 py-1 rounded-md;
+}
+
+.next-button {
+  @apply bg-blue-500 hover:bg-blue-600 text-white text-xs px-2 py-1 rounded-md;
+}
+
+.add-button {
+  @apply bg-blue-500 hover:bg-blue-600 text-white text-xs px-2 py-1 rounded-md;
+}
+
+/* Font size input with spinner */
+.font-size-input {
+  @apply flex items-center;
+}
+
+.font-size-input input {
+  @apply w-16 h-9 px-2 py-1 text-sm border border-gray-300 rounded-l-md text-center;
+}
+
+.font-size-input .spinner {
+  @apply flex flex-col border border-l-0 border-gray-300 rounded-r-md overflow-hidden;
+}
+
+.font-size-input .spinner button {
+  @apply bg-gray-100 hover:bg-gray-200 text-gray-700 h-4 w-5 flex items-center justify-center text-xs;
+}
+
+/* Slider styles */
+.slider-container {
+  @apply flex-1 flex items-center gap-2;
+}
+
+.slider-container .slider {
+  @apply flex-1;
+}
+
+.slider-container .value {
+  @apply w-8 text-center text-sm;
+}
+
+/* Upload area */
+.upload-area {
+  @apply flex items-center gap-4;
+}
+
+.upload-button {
+  @apply bg-gray-100 border border-gray-300 rounded-md h-9 px-3 flex-1 flex items-center text-sm;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .form-row {
+    @apply flex-col;
+  }
+
+  .form-field-auto,
+  .form-field-fixed {
+    @apply w-full;
+  }
+
+  .button-row {
+    @apply flex-wrap;
+  }
+}
